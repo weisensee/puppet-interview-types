@@ -4,6 +4,7 @@ consider yourself warned....
 ****************************/
 import {
 	AdminResult,
+	CsvStatus,
 	Result,
 	Question,
 	QuestionDetail,
@@ -78,6 +79,14 @@ export const nullAnswer: (index?: number, variable?: string) => Answer = (
 		index: newIndex,
 		response: 'Not Answered',
 		variable: variable || ''
+	};
+	return newObj;
+};
+
+export const nullCsvStatus: () => CsvStatus = () => {
+	let newObj = {
+		modified: false,
+		dateUpdated: Date.now()
 	};
 	return newObj;
 };
