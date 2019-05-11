@@ -43,6 +43,7 @@ export interface Result {
 	childId: string;
 	id: string;
 	language: string;
+	school: string;
 }
 
 export interface CsvStatus {
@@ -79,10 +80,7 @@ export const nullAdminResult: () => AdminResult = () => {
 	};
 	return newObj;
 };
-export const nullResult: (id?: string, questions?: string[]) => Result = (
-	id,
-	questions
-) => {
+export const nullResult: (id?: string, questions?: string[]) => Result = (id, questions) => {
 	let answers = [];
 	if (questions) {
 		let i;
@@ -98,7 +96,8 @@ export const nullResult: (id?: string, questions?: string[]) => Result = (
 		dateUpdated: Date.now(),
 		childId: id || '',
 		id: id || '',
-		language: ''
+		language: '',
+		school: ''
 	};
 	return newObj;
 };
@@ -123,10 +122,7 @@ export const nullInterview: () => Interview = () => {
 	return newObj;
 };
 
-export const nullAnswer: (index?: number, variable?: string) => Answer = (
-	index,
-	variable
-) => {
+export const nullAnswer: (index?: number, variable?: string) => Answer = (index, variable) => {
 	// handle index === 0
 	let newIndex = -1;
 	if (index || index === 0) {
