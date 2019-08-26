@@ -1,3 +1,5 @@
+import { PlatformManifest } from 'expo-constants';
+
 export interface AppState {
 	childIds: number[];
 	currentQuestionIndex: number;
@@ -55,6 +57,23 @@ export interface AdminResult {
 	answers: Answer[];
 	interviewId: string;
 	id: string;
+}
+
+export interface ConnectedDevice {
+	connections: any[];
+	info: DeviceInfo;
+	lastOnline: number;
+}
+
+export interface DeviceInfo {
+	appOwnership: string;
+	deviceName: string;
+	deviceYearClass: number;
+	installationId: string;
+	isDevice: boolean;
+	manifest: any;
+	platform: PlatformManifest;
+	sessionId: string;
 }
 
 /* *******  WARNING ********
