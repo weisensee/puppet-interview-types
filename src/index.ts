@@ -1,3 +1,4 @@
+
 export interface QuestionDetail {
 	leftText: string;
 	rightText: string;
@@ -56,6 +57,23 @@ export interface AdminResult {
 	help: string;
 	savingMoneyGoal: string;
 	specialNeeds: string;
+}
+
+export interface ConnectedDevice {
+	connections: any[];
+	info: DeviceInfo;
+	lastOnline: number;
+}
+
+export interface DeviceInfo {
+	appOwnership: string;
+	deviceName: string;
+	deviceYearClass: number;
+	installationId: string;
+	isDevice: boolean;
+	manifest: any;
+	platform: PlatformManifest;
+	sessionId: string;
 }
 
 /* *******  WARNING ********

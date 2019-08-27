@@ -1,6 +1,6 @@
 {
 	"name": "puppet-interview-types",
-	"version": "1.0.8",
+	"version": "1.0.10",
 	"description": "typescript types and simple empty constructors for puppet interview app database object consistency",
 	"main": "src/index.js",
 	"scripts": {
@@ -21,5 +21,8 @@
 	"types": "dist/index.d.ts",
 	"files": [
 		"dist/**/*"
-	]
+	],
+	"dependencies": {
+		"expo-constants": "^6.0.0"
+	}
 }
