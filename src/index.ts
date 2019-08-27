@@ -1,3 +1,4 @@
+import { PlatformManifest } from 'expo-constants';
 
 export interface QuestionDetail {
 	leftText: string;
@@ -74,6 +75,34 @@ export interface DeviceInfo {
 	manifest: any;
 	platform: PlatformManifest;
 	sessionId: string;
+}
+
+export interface FirebaseUser {
+	uid: string;
+	email: string;
+	emailVerified: boolean;
+	displayName: string;
+	photoURL: string;
+	phoneNumber: undefined;
+	disabled: boolean;
+	metadata: {
+		lastSignInTime: string;
+		creationTime: string;
+	};
+	passwordHash: string | undefined;
+	passwordSalt: string | undefined;
+	customClaims: { claims: object } | undefined;
+	tokensValidAfterTime: string;
+	providerData: [
+		{
+			uid: string;
+			displayName: string;
+			email: string;
+			photoURL: string;
+			providerId: string;
+			phoneNumber: string | undefined;
+		}
+	];
 }
 
 /* *******  WARNING ********
