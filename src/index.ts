@@ -1,15 +1,3 @@
-export interface AppState {
-	childIds: number[];
-	currentQuestionIndex: number;
-	interview: Interview;
-	interviewLoaded: boolean;
-	language?: string;
-	languages: 'English' | 'Spanish';
-	result: Result;
-	selectedInterview: string;
-	verified: boolean;
-}
-
 export interface QuestionDetail {
 	leftText: string;
 	rightText: string;
@@ -37,13 +25,22 @@ export interface Answer {
 export interface Result {
 	adminResult: AdminResult;
 	answers: Answer[];
+	assent: boolean;
 	csv?: string;
-	dateStarted: number;
+	dateQuestionsStarted: number;
+	dateQuestionsUpdated: number;
+	datePracticeStarted: number;
+	datePracticeUpdated: number;
+	dateSessionStart: number;
 	dateUpdated: number;
 	childId: string;
 	id: string;
+	interviewer: string;
 	language: string;
+	practiceDuration: number;
+	questionDuration: number;
 	school: string;
+	sessionDuration: number;
 }
 
 export interface CsvStatus {
@@ -52,9 +49,13 @@ export interface CsvStatus {
 }
 
 export interface AdminResult {
-	answers: Answer[];
-	interviewId: string;
-	id: string;
+	break: string;
+	childrenOverseen: string;
+	collegeGoal: string;
+	engaged: string;
+	help: string;
+	savingMoneyGoal: string;
+	specialNeeds: string;
 }
 
 /* *******  WARNING ********
@@ -74,13 +75,25 @@ import {
 
 export const nullAdminResult: () => AdminResult = () => {
 	let newObj = {
-		answers: [],
-		interviewId: '',
-		id: ''
+		break: 'Not Answered',
+		collegeGoal: 'Not Answered',
+		engaged: 'Not Answered',
+		help: 'Not Answered',
+		childrenOverseen: 'Not Answered',
+		savingMoneyGoal: 'Not Answered',
+		specialNeeds: 'Not Answered'
 	};
 	return newObj;
 };
-export const nullResult: (id?: string, questions?: string[]) => Result = (id, questions) => {
+
+export const nullResult: (
+	id?: string,
+	interviewer?: string,
+	school?: string,
+	language?: string,
+	assent?: boolean,
+	questions?: string[]
+) => Result = (id, interviewer, school, language, assent, questions) => {
 	let answers = [];
 	if (questions) {
 		let i;
@@ -92,12 +105,21 @@ export const nullResult: (id?: string, questions?: string[]) => Result = (id, qu
 	let newObj = {
 		adminResult: nullAdminResult(),
 		answers: answers,
-		dateStarted: Date.now(),
+		assent: assent || false,
+		dateQuestionsStarted: -1,
+		dateQuestionsUpdated: -1,
+		datePracticeStarted: -1,
+		datePracticeUpdated: -1,
+		dateSessionStart: -1,
 		dateUpdated: Date.now(),
 		childId: id || '',
 		id: id || '',
-		language: '',
-		school: ''
+		interviewer: interviewer || '',
+		language: language || '',
+		practiceDuration: 0,
+		questionDuration: 0,
+		school: school || '',
+		sessionDuration: 0
 	};
 	return newObj;
 };
