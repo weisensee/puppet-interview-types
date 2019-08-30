@@ -85,6 +85,7 @@ export interface FirebaseUser {
 	photoURL: string;
 	phoneNumber: undefined;
 	disabled: boolean;
+	claims: object;
 	metadata: {
 		lastSignInTime: string;
 		creationTime: string;
