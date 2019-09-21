@@ -24,6 +24,15 @@ export interface Answer {
 	variable: string;
 }
 
+export interface UserAccessInfo {
+	enabled: boolean;
+	manageUserAccess: boolean;
+	viewResults: boolean;
+	viewActiveDevices: boolean;
+	editInterview: boolean;
+	admin: boolean;
+}
+
 export interface Result {
 	adminResult: AdminResult;
 	answers: Answer[];
