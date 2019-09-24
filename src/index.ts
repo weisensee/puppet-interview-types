@@ -37,7 +37,6 @@ export interface Result {
 	adminResult: AdminResult;
 	answers: Answer[];
 	assent: boolean;
-	csv?: string;
 	dateQuestionsStarted: number;
 	dateQuestionsUpdated: number;
 	datePracticeStarted: number;
@@ -120,28 +119,15 @@ object oriented *ish constructors below
 consider yourself warned....
 ****************************/
 
-import {
-	AdminResult,
-	CsvStatus,
-	Result,
-	Question,
-	QuestionDetail,
-	Interview,
-	Answer
-} from './index';
-
-export const nullAdminResult: () => AdminResult = () => {
-	let newObj = {
-		break: 'Not Answered',
-		collegeGoal: 'Not Answered',
-		engaged: 'Not Answered',
-		help: 'Not Answered',
-		childrenOverseen: 'Not Answered',
-		savingMoneyGoal: 'Not Answered',
-		specialNeeds: 'Not Answered'
-	};
-	return newObj;
-};
+export const nullAdminResult: () => AdminResult = () => ({
+	break: 'Not Answered',
+	collegeGoal: 'Not Answered',
+	engaged: 'Not Answered',
+	help: 'Not Answered',
+	childrenOverseen: 'Not Answered',
+	savingMoneyGoal: 'Not Answered',
+	specialNeeds: 'Not Answered'
+});
 
 export const nullResult: (
 	id?: string,
@@ -151,15 +137,9 @@ export const nullResult: (
 	assent?: boolean,
 	questions?: string[]
 ) => Result = (id, interviewer, school, language, assent, questions) => {
-	let answers = [];
-	if (questions) {
-		let i;
-		for (i = 0; i < questions.length; i++) {
-			answers.push(nullAnswer(i, questions[i]));
-		}
-	}
+	const answers = questions ? questions.map((value, i) => nullAnswer(i, value)) : [];
 
-	let newObj = {
+	return {
 		adminResult: nullAdminResult(),
 		answers: answers,
 		assent: assent || false,
@@ -178,49 +158,28 @@ export const nullResult: (
 		school: school || '',
 		sessionDuration: 0
 	};
-	return newObj;
 };
-export const nullQuestionDetail: () => QuestionDetail = () => {
-	let newObj = { leftText: '', rightText: '' };
-	return newObj;
-};
-export const nullQuestion: () => Question = () => {
-	let newObj = {
-		variableName: 'default',
-		engQuestion: nullQuestionDetail(),
-		spnQuestion: nullQuestionDetail()
-	};
-	return newObj;
-};
-export const nullInterview: () => Interview = () => {
-	let newObj = {
-		id: '',
-		name: 'none',
-		questions: []
-	};
-	return newObj;
-};
+
+export const nullQuestionDetail: () => QuestionDetail = () => ({ leftText: '', rightText: '' });
+
+export const nullQuestion: () => Question = () => ({
+	variableName: 'default',
+	engQuestion: nullQuestionDetail(),
+	spnQuestion: nullQuestionDetail()
+});
+
+export const nullInterview: () => Interview = () => ({ id: '', name: 'none', questions: [] });
 
 export const nullAnswer: (index?: number, variable?: string) => Answer = (index, variable) => {
 	// handle index === 0
-	let newIndex = -1;
-	if (index || index === 0) {
-		newIndex = index;
-	}
+	const newIndex = index || index === 0 ? index : -1;
 
-	let newObj = {
+	return {
 		dateCreated: Date.now(),
 		index: newIndex,
 		response: 'Not Answered',
 		variable: variable || ''
 	};
-	return newObj;
 };
 
-export const nullCsvStatus: () => CsvStatus = () => {
-	let newObj = {
-		modified: false,
-		dateUpdated: Date.now()
-	};
-	return newObj;
-};
+export const nullCsvStatus: () => CsvStatus = () => ({ modified: false, dateUpdated: Date.now() });
