@@ -1,6 +1,6 @@
 {
 	"name": "puppet-interview-types",
-	"version": "2.0.10",
+	"version": "2.0.11",
 	"description": "typescript types and simple empty constructors for puppet interview app database object consistency",
 	"main": "dist/index.js",
 	"scripts": {

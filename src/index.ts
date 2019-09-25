@@ -24,6 +24,8 @@ export interface Answer {
 	variable: string;
 }
 
+export type Location = string[];
+
 export interface UserAccessInfo {
 	enabled: boolean;
 	manageUserAccess: boolean;
