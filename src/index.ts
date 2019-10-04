@@ -116,6 +116,25 @@ export interface FirebaseUser {
 	];
 }
 
+export interface Theme {
+	primaryColor: string;
+	secondaryColor: string;
+	tertiaryColor: string;
+	lightText: string;
+	greyText: string;
+	darkText: string;
+	lightBackground: string;
+	lightIcon: string;
+	disabledBackground: string;
+	activeGreen: string;
+	activeGreenBackground: string;
+	errorBackground: string;
+	errorText: string;
+	lightRedBackground: string;
+	warningBackground: string;
+	warningText: string;
+}
+
 /* *******  WARNING ********
 object oriented *ish constructors below
 consider yourself warned....
