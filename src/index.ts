@@ -70,10 +70,23 @@ export interface AdminResult {
 	specialNeeds: string;
 }
 
+export interface InitializationInfo {
+	assent?: boolean;
+	childId: string;
+	interviewer: string;
+	language: string;
+	school: string;
+}
+
 export interface ConnectedDevice {
 	connections: any[];
 	info: DeviceInfo;
 	lastOnline: number;
+	progress: {
+		currentQuestion?: number;
+		initializationInfo?: InitializationInfo;
+		result?: Result;
+	};
 }
 
 export interface DeviceInfo {
