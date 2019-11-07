@@ -67,7 +67,8 @@ export interface AdminResult {
 	engaged: string;
 	help: string;
 	savingMoneyGoal: string;
-	specialNeeds: string;
+	incompletenessExplanation: string;
+	otherAffects: string;
 }
 
 export interface InitializationInfo {
