@@ -161,7 +161,8 @@ export const nullAdminResult: () => AdminResult = () => ({
 	help: 'Not Answered',
 	childrenOverseen: 'Not Answered',
 	savingMoneyGoal: 'Not Answered',
-	specialNeeds: 'Not Answered'
+	incompletenessExplanation: 'Not Answered',
+	otherAffects: 'Not Answered'
 });
 
 export const nullResult: (
