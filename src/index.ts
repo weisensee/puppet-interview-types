@@ -153,16 +153,17 @@ export interface Theme {
 object oriented *ish constructors below
 consider yourself warned....
 ****************************/
+const NOT_ANSWERED = 'Not Answered';
 
 export const nullAdminResult: () => AdminResult = () => ({
-	break: 'Not Answered',
-	collegeGoal: 'Not Answered',
-	engaged: 'Not Answered',
-	help: 'Not Answered',
-	childrenOverseen: 'Not Answered',
-	savingMoneyGoal: 'Not Answered',
-	incompletenessExplanation: 'Not Answered',
-	otherAffects: 'Not Answered'
+	break: NOT_ANSWERED,
+	collegeGoal: NOT_ANSWERED,
+	engaged: NOT_ANSWERED,
+	help: NOT_ANSWERED,
+	childrenOverseen: NOT_ANSWERED,
+	savingMoneyGoal: NOT_ANSWERED,
+	incompletenessExplanation: NOT_ANSWERED,
+	otherAffects: NOT_ANSWERED
 });
 
 export const nullResult: (
