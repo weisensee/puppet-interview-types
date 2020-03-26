@@ -149,6 +149,47 @@ export interface Theme {
     warningText: string;
 }
 
+export type AuditVersionRecord = {
+    [version: string]: { [device: string]: AuditChildRecord };
+};
+
+export type AuditChildRecord = {
+    [childId: string]: { actions: AuditAction[]; initializationInfo: InitializationInfo };
+};
+
+export type AuditAction = {
+    [timestamp: string]: AuditActionDetails;
+};
+
+export type AuditActionDetails = {
+    currentQuestionIndex: number;
+    description: string;
+    info: {
+        currentQuestion: {
+            engQuestion: {
+                leftText: string;
+                rightText: string;
+            };
+            spnQuestion: {
+                leftText: string;
+                rightText: string;
+            };
+            variableName: string;
+        };
+        currentlyShowingAnimation: boolean;
+        previousResponse: string;
+        questionIndex: number;
+        direction?: 'Left' | 'Right';
+        leftText?: string;
+        playThatsLikeMe?: boolean;
+        questionPosed?: boolean;
+        rightText?: string;
+        selectedText?: string;
+        thatsLikeMeFile?: string;
+    };
+    timestamp: number;
+};
+
 /* *******  WARNING ********
 object oriented *ish constructors below
 consider yourself warned....
